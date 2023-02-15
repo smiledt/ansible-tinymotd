@@ -1,0 +1,23 @@
+---
+# tasks file for tinymotd
+
+- name: Pull tinymotd from github
+  git:
+    repo: "{{ repo_source }}"
+    dest: "{{ repo_dest }}"
+    update: yes
+
+- name: Add tinymotd to {{ motd_dir }}
+  template:
+    src: 89-tinymotd-template
+    dest: /etc/update-motd.d/89-tinymotd
+    owner: root
+    mode: '0755'
+
+- name: Remove executable permission from undesired motd files in {{ motd_dir }}
+  file:
+    path: "{{ motd_dir }}/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ unwanted_motd_files }}"

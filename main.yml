@@ -1,0 +1,7 @@
+---
+# Main playbook for the tinymotd role
+- name: Pull tinymotd and set it in the motd.
+  hosts: linux
+  become: true
+  roles:
+    - role: tinymotd
