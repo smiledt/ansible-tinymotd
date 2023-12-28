@@ -6,5 +6,5 @@ motd_dir: /etc/update-motd.d
 unwanted_motd_files:
   - 50-motd-news
   - 50-landscape-sysinfo
-  - 88-esm-announce
+ # - 88-esm-announce
   - 90-updates-available
